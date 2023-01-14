@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix(\App\Facades\Core::getData('core.admin_prefix'))->name('dashboard.')->group(function(){
+    Route::get('/', [\App\Http\Controllers\Dashboard\IndexController::class, 'index'])->name('index');
+    Route::get('/login', [\App\Http\Controllers\Dashboard\AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [\App\Http\Controllers\Dashboard\AuthController::class, 'login']);
+    Route::post('/logout', [\App\Http\Controllers\Dashboard\AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/settings', [\App\Http\Controllers\Dashboard\SettingsController::class, 'index'])->name('settings.index');
+    Route::post('/settings', [\App\Http\Controllers\Dashboard\SettingsController::class, 'update']);
 });

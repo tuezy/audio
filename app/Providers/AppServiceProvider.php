@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom(app_path('Configs/core.php'), 'core');
+        $this->mergeConfigFrom(app_path('Configs/dashboard.php'), 'dashboard');
+        $this->loadViewsFrom(resource_path('dashboard'), 'dashboard');
+        include app_path('Helpers/functions.php');
     }
 
     /**
