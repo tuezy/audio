@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix(\App\Facades\Core::getData('core.admin_prefix'))->name('dashboard.')->group(function(){
+Route::prefix('dashboard')->name('dashboard.')->group(function(){
     Route::get('/', [\App\Http\Controllers\Dashboard\IndexController::class, 'index'])->name('index');
     Route::get('/login', [\App\Http\Controllers\Dashboard\AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [\App\Http\Controllers\Dashboard\AuthController::class, 'login']);
@@ -21,4 +21,26 @@ Route::prefix(\App\Facades\Core::getData('core.admin_prefix'))->name('dashboard.
 
     Route::get('/settings', [\App\Http\Controllers\Dashboard\SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings', [\App\Http\Controllers\Dashboard\SettingsController::class, 'update']);
+
+    Route::get('/users', [\App\Http\Controllers\Dashboard\UsersController::class, 'index'])->name('users.index');
+    Route::get('/users/datatables', [\App\Http\Controllers\Dashboard\UsersController::class, 'datatables'])->name('users.index.datatables');
+    Route::post('/users', [\App\Http\Controllers\Dashboard\UsersController::class, 'update']);
+    Route::get('/users/delete/{id}', [\App\Http\Controllers\Dashboard\UsersController::class, 'delete']);
+
+
+    Route::get('/playlist', [\App\Http\Controllers\Dashboard\PlaylistController::class, 'index'])->name('playlist.index');
+    Route::get('/playlist/datatables', [\App\Http\Controllers\Dashboard\PlaylistController::class, 'datatables'])->name('playlist.index.datatables');
+
+    Route::post('/playlist/edit', [\App\Http\Controllers\Dashboard\PlaylistController::class, 'update']);
+    Route::get('/playlist/edit', [\App\Http\Controllers\Dashboard\PlaylistController::class, 'edit'])->name('playlist.edit');
+
+    Route::post('/playlist/create', [\App\Http\Controllers\Dashboard\PlaylistController::class, 'store']);
+    Route::get('/playlist/create', [\App\Http\Controllers\Dashboard\PlaylistController::class, 'create'])->name('playlist.create');
+
+
+    Route::get('/audio', [\App\Http\Controllers\Dashboard\AudioController::class, 'index'])->name('audio.index');
+    Route::get('/audio/create', [\App\Http\Controllers\Dashboard\AudioController::class, 'create'])->name('audio.create');
+    Route::post('/audio/create', [\App\Http\Controllers\Dashboard\AudioController::class, 'store'])->name('audio.store');
+
+    Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('any');
 });

@@ -35,7 +35,8 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' =>  __('dashboard.errors.login.email'),
+            'password' =>  __('dashboard.errors.login.password'),
         ]);
     }
     public function logout(Request $request){

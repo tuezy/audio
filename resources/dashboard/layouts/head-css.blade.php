@@ -9,4 +9,8 @@
 <link href="{{ URL::asset('assets/dashboard/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 <!-- custom Css-->
 <link href="{{ URL::asset('assets/dashboard/css/custom.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
+<link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+
+@stack('styles')
 {{-- @yield('css') --}}

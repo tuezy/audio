@@ -4,6 +4,7 @@ namespace App\Repository\Base;
 use App\Repository\RepositoryException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 abstract class Repository implements RepositoryInterface, CriteriaInterface {
@@ -15,6 +16,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
     protected $criteria;
 
     protected $skipCriteria = false;
+
+    protected $useCache = false;
 
 
     public function __construct(Application $app, Collection $collection) {
@@ -41,7 +44,6 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
     }
 
     public function create(array $data) {
-
         return $this->model->create($data);
     }
 
@@ -65,6 +67,11 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
     public function findBy($attribute, $value, $columns = array('*')) {
         $this->applyCriteria();
         return $this->model->where($attribute, '=', $value)->first($columns);
+    }
+
+    public function findOrFail($id, $columns = array('*')){
+        $this->applyCriteria();
+        return $this->model->findOrFail($id, $columns);
     }
 
     public function makeModel() {
@@ -132,4 +139,6 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
 
         return $this;
     }
+
+
 }

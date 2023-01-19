@@ -26,13 +26,16 @@ class Core{
 
         $settings = $this->settingRepository->all(['code','value']);
 
-        foreach($settings as $setting){
-            $loadedData[$setting->code] = $setting->value;
+        if($settings){
+            foreach($settings as $setting){
+                $loadedData[$setting->code] = $setting->value;
 
-            if($setting->code == $key){
-                return $setting->value;
+                if($setting->code == $key){
+                    return $setting->value;
+                }
             }
         }
+
         if(config()->has($key)){
             $default = config($key);
         }
