@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Repository\PlaylistRepository;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
@@ -47,6 +48,9 @@ class MakePlaylist extends Command
             ->getModel()
             ->with("audio")->findOrFail($this->argument('id'));
 
+        if(!File::exists(storage_path('app/public/' . $playlist->folder))){
+            File::makeDirectory(storage_path('app/public/' . $playlist->folder), 777,1);
+        }
         $cmd = 'ffmpeg ';
         foreach ($playlist->audio as $audio){
             $cmd .= ' -i ' . storage_path('app/'.$audio->path);
