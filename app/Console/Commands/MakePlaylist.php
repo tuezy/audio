@@ -49,17 +49,17 @@ class MakePlaylist extends Command
             ->getModel()
             ->with("audio")->findOrFail($this->argument('id'));
         $hlsDir = storage_path('app/public/hls/' . $playlist->folder);
-        if(!File::exists($hlsDir)){
-            File::makeDirectory($hlsDir, 777,1);
-        }else{
+        if(File::exists($hlsDir)){
             File::deleteDirectory($hlsDir);
-            File::makeDirectory($hlsDir, 777,1);
         }
+
+        File::makeDirectory($hlsDir, 777,1);
+
         $cmd = 'ffmpeg ';
         foreach ($playlist->audio as $audio){
             $cmd .= ' -i ' . storage_path('app/'.$audio->path);
         }
-        $cmd .= ' -filter_complex \'[0:0][1:0]concat=n=3:v=0:a=1[out]\' -map \'[out]\' -vn -ac 2 -acodec aac -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ';
+        $cmd .= ' -filter_complex \'[0:0][1:0]concat=n='.count($playlist->audio).':v=0:a=1[out]\' -map \'[out]\' -vn -ac 2 -acodec aac -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ';
         $cmd .= $hlsDir . DIRECTORY_SEPARATOR .$playlist->type .'.m3u8';
         $this->info($cmd);
         $process = Process::fromShellCommandline($cmd);
