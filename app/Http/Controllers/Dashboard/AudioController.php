@@ -71,7 +71,7 @@ class AudioController extends BaseDashboardController
                 'user_id' => $user_id,
                 'type'  => $type
             ],[
-                'ready' => Playlist::PLAYLIST_STATUS_PENDING,
+                'status' => Playlist::PLAYLIST_STATUS_PENDING,
                 'folder' => $directory
             ]);
 
