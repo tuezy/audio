@@ -32,6 +32,7 @@ class MakePlaylist extends Command
      */
 
     protected $playlistRepository;
+
     public function __construct(PlaylistRepository $playlistRepository)
     {
         parent::__construct();
@@ -53,7 +54,7 @@ class MakePlaylist extends Command
             File::deleteDirectory($hlsDir);
         }
 
-        File::makeDirectory($hlsDir, 777,1);
+        File::makeDirectory($hlsDir);
 
         $cmd = 'ffmpeg ';
         foreach ($playlist->audio as $audio){

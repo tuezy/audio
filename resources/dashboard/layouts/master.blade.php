@@ -45,7 +45,6 @@
                 <!-- container-fluid -->
             </div>
             <!-- End Page-content -->
-            @include('dashboard::layouts.footer')
         </div>
         <!-- end main content-->
     </div>
