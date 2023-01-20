@@ -5,13 +5,7 @@
     </a>
 </li>
 <li class="nav-item">
-    <a class="nav-link menu-link" href="{{ route('dashboard.users.index') }}">
-        <i class="ri-file-user-line"></i> <span>Users</span>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a class="nav-link menu-link" href="{{ route('dashboard.settings.index') }}">
-        <i class="ri-settings-2-line"></i> <span>Settings</span>
+    <a class="nav-link menu-link" href="{{ route('dashboard.playlist.index') }}">
+        <i class="ri-file-user-line"></i> <span>Playlist</span>
     </a>
 </li>

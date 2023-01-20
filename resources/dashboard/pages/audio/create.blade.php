@@ -4,11 +4,30 @@
     <form action="" method="POST">
     @csrf
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header">
-                    </div>
                     <div class="card-body">
+                        <div class="mb-3">
+                            <label for="choices-publish-status-input" class="form-label">Broadcast Date</label>
+                            <div class="input-group">
+
+                                <input type="text" name="broadcast_date" id="broadcast_date"
+                                       class="form-control border-0 dash-filter-picker shadow"
+                                       data-provider="flatpickr"
+                                       data-date-format="d-m-Y"
+                                       data-deafult-date="{{ date('d-m-Y') }}">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="choices-publish-status-input" class="form-label">Type</label>
+
+                            <select name="type" class="form-select" id="choices-publish-status-input" data-choices data-choices-search-false>
+                                <option value="morning" selected>Sáng</option>
+                                <option value="afternoon">Trưa</option>
+                                <option value="evening">Tối</option>
+                            </select>
+                        </div>
+
                         <div class="dropzone">
                             <div class="fallback">
                                 <input name="file" type="file" multiple="multiple">
@@ -46,39 +65,14 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label for="choices-publish-status-input" class="form-label">Broadcast Date</label>
-                            <div class="input-group">
-
-                                <input type="text" name="broadcast_date" id="broadcast_date"
-                                       class="form-control border-0 dash-filter-picker shadow"
-                                       data-provider="flatpickr"
-                                       data-date-format="d-m-Y"
-                                       data-deafult-date="{{ date('d-m-Y') }}">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="choices-publish-status-input" class="form-label">Type</label>
-
-                            <select name="type" class="form-select" id="choices-publish-status-input" data-choices data-choices-search-false>
-                                <option value="morning" selected>Morning</option>
-                                <option value="afternoon">Afternoon</option>
-                                <option value="evening">Evening</option>
-                            </select>
-                        </div>
-                        <div class="text-end mb-3">
-                            <button type="submit" class="btn btn-success w-sm">Submit</button>
+                        <div class="text-end my-3">
+                            <a href="{{ route('dashboard.playlist.index') }}" class="btn btn-success w-sm">Playlist</a>
                         </div>
 
                     </div>
                 </div>
             </div>
+
         </div>
     </form>
 @endsection

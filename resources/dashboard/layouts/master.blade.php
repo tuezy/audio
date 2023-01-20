@@ -37,7 +37,6 @@
                                         </div><!-- end card header -->
                                     </div>
                                 </div>
-
                                 @yield('content')
                             </div> <!-- end .h-100-->
                         </div> <!-- end col -->

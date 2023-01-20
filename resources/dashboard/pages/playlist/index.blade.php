@@ -1,8 +1,6 @@
 @extends('dashboard::layouts.master')
 @section('title') @lang('translation.dashboard')  @endsection
 @section('content')
-    @php
-        @endphp
     <form action="" method="POST">
         @csrf
         <div class="row">
@@ -14,9 +12,8 @@
                     <div class="card-body p-4">
                         <table id="datatables-html" class="display table table-bordered dt-responsive" style="width:100%">
                             <thead>
-                            <tr>
                                 <th scope="col" style="width: 10px;">
-                                    <div class="form-check">
+                                    <div class="form-check text-center">
                                         <input class="form-check-input fs-15" type="checkbox" id="checkAll" value="option">
                                     </div>
                                 </th>
@@ -25,7 +22,6 @@
                                 <th>Type</th>
                                 <th>Ready</th>
                                 <th class="text-center">Action</th>
-                            </tr>
                             </thead>
                             <tbody class="form-check-all"></tbody>
                         </table>
@@ -33,7 +29,6 @@
                 </div>
             </div>
         </div>
-        <button type="submit">Submit</button>
     </form>
 @endsection
 @section('script')
@@ -135,7 +130,6 @@
         }
         waitForElm('.dataTable-checkbox').then((elm) => {
             var checkboxItems = document.querySelectorAll(".dataTable-checkbox");
-            console.log(checkboxItems);
             if(checkboxItems){
                 Array.from(checkboxItems).forEach(function (item) {
                     console.log(item);
@@ -148,9 +142,6 @@
                     });
                 });
             }
-        });
-        ready(function(){
-
         });
 
     </script>
