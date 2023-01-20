@@ -51,6 +51,9 @@ class MakePlaylist extends Command
         $hlsDir = storage_path('app/public/hls/' . $playlist->folder);
         if(!File::exists($hlsDir)){
             File::makeDirectory($hlsDir, 777,1);
+        }else{
+            File::deleteDirectory($hlsDir);
+            File::makeDirectory($hlsDir, 777,1);
         }
         $cmd = 'ffmpeg ';
         foreach ($playlist->audio as $audio){

@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 class AudioController extends BaseDashboardController
 {
@@ -93,7 +94,9 @@ class AudioController extends BaseDashboardController
 
     public function delete($id){
         $audio = $this->audioRepository->findOrFail($id);
+
         if ($audio->delete()) {
+            Storage::delete($audio->path);
             $this->playlistRepository->update([
                 'status'  => Playlist::PLAYLIST_STATUS_PENDING
             ],$audio->playlist_id);
