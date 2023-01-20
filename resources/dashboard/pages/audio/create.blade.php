@@ -112,7 +112,7 @@
                 this.on("success", function(file, response) {
                     file.previewTemplate.appendChild(document.createTextNode(response));
                 });
-                this.on("complete", function(file) {
+                this.on("complete", function(file, response) {
                     this.removeFile(file);
                 });
             },

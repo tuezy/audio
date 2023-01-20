@@ -46,5 +46,9 @@ Route::prefix('dashboard')->name('dashboard.')->group(function(){
 
     Route::get('/playlist/make/{id}', [\App\Http\Controllers\Dashboard\PlaylistController::class, 'make'])->name('make.playlist');
 
+
+
     Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('any');
 });
+
+    Route::get('/hsl/{user}/{id}.m3u8', [\App\Http\Controllers\Dashboard\PlaylistController::class, 'make'])->name('make.playlist');

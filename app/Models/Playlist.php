@@ -22,7 +22,7 @@ class Playlist extends Model
 
     public const PLAYLIST_STATUS_COMPLETED = 'completed';
 
-    protected $fillable = ['folder','type', 'broadcast_date','user_id'];
+    protected $fillable = ['folder','type', 'broadcast_date','user_id', 'status'];
 
     public function audio(){
         return $this->hasMany(Audio::class);
