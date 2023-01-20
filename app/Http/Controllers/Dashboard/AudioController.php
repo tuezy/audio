@@ -93,8 +93,10 @@ class AudioController extends BaseDashboardController
 
     public function delete($id){
         $audio = $this->audioRepository->findOrFail($id);
-
         if ($audio->delete()) {
+            $this->playlistRepository->update([
+                'status'  => Playlist::PLAYLIST_STATUS_PENDING
+            ],$audio->playlist_id);
             session()->flash('success', trans('dashboard.delete-success'));
             return redirect()->route('dashboard.audio.index');
         } else {
