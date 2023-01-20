@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Dashboard\Datatables\AudioDatatables;
 use App\Http\Controllers\Dashboard\Datatables\UserDatatables;
 use App\Http\Requests\Dashboard\SettingsRequest;
+use App\Models\Playlist;
 use App\Repository\AudioRepository;
 use App\Repository\PlaylistRepository;
 use App\Repository\SettingRepository;
@@ -70,7 +71,7 @@ class AudioController extends BaseDashboardController
                 'type'  => $type
             ],[
                 'user_id' => $user_id,
-                'ready' => 'pending',
+                'ready' => Playlist::PLAYLIST_STATUS_PENDING,
                 'folder' => $directory
             ]);
 
