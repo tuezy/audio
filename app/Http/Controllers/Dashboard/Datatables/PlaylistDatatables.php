@@ -35,11 +35,11 @@ class PlaylistDatatables extends BaseDatatables
             ->addColumn('type', function ($value){
                 return  $value->type;
             })
-            ->addColumn('ready', function ($value){
-                return '<span class="btn btn-sm btn-'.($value->ready == 'pending' ? 'danger':'success').'">'.$value->ready.'</span>';
+            ->addColumn('status', function ($value){
+                return '<span class="btn btn-sm btn-'.($value->status == 'pending' ? 'danger':'success').'">'.$value->status.'</span>';
             })
             ->addColumn('action', function ($value) {
-                switch ($value->ready){
+                switch ($value->status){
                     case 'pending':
                         return '<button class="btn btn-primary">Stream</button>';
                         break;

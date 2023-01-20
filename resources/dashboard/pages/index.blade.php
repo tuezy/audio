@@ -8,9 +8,7 @@
                     <div class="col-12">
                         <div class="d-flex align-items-lg-center flex-lg-row flex-column justify-content-end">
                             <div class="flex-grow-1">
-                                <h4 class="fs-16 mb-1">Good Morning, Anna!</h4>
-                                <p class="text-muted mb-0">Here's what's happening with your store
-                                    today.</p>
+                                <h4 class="fs-16 mb-1">Good Morning, {{ \Illuminate\Support\Facades\Auth::user()->name }}!</h4>
                             </div>
                             <div class="mt-3 mt-lg-0">
                                 <form action="" method="GET">
@@ -61,9 +59,6 @@
             </div> <!-- end .h-100-->
 
         </div> <!-- end col -->
-        @can(config('dashboard.permission.view-activity'))
-            @include('dashboard::pages.partials.activity')
-        @endcan
     </div>
 @endsection
 @section('script')

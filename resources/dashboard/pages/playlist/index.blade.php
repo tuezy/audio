@@ -20,7 +20,7 @@
                                 <th class="px-0">ID</th>
                                 <th>Broadcast On</th>
                                 <th>Type</th>
-                                <th>Ready</th>
+                                <th>Status</th>
                                 <th class="text-center">Action</th>
                             </thead>
                             <tbody class="form-check-all"></tbody>
@@ -69,7 +69,7 @@
                     {data: 'id',name: 'id', width: '50px',orderable: false, searchable: false, class: 'text-center'},
                     {data: 'broadcast_date',name: 'broadcast_date', searchable: true, width: '100px'},
                     {data: 'type',name: 'type', searchable: true, width: '50px'},
-                    {data: 'ready',name: 'ready', searchable: true, width: '50px'},
+                    {data: 'status',name: 'status', searchable: true, width: '50px'},
                     {data: 'action',name: 'action', width: '80px',orderable: false, searchable: false, class: 'text-center'},
                 ]
             });
