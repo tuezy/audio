@@ -57,7 +57,7 @@ class MakePlaylist extends Command
             $cmd .= ' -i ' . storage_path('app/'.$audio->path);
         }
         $cmd .= ' -filter_complex \'[0:0][1:0]concat=n=3:v=0:a=1[out]\' -map \'[out]\' -vn -ac 2 -acodec aac -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ';
-        $cmd .= storage_path($hlsDir . '.m3u8' );
+        $cmd .= storage_path($hlsDir . DIRECTORY_SEPARATOR .$playlist->type .'.m3u8' );
         $this->info($cmd);
         $process = Process::fromShellCommandline($cmd);
         $process->run();
