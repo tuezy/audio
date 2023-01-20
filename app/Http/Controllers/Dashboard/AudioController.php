@@ -68,12 +68,13 @@ class AudioController extends BaseDashboardController
         if( $path ) {
             $playlist = $this->playlistRepository->updateOrCreate([
                 'broadcast_date' => $broadcast_date,
+                'user_id' => $user_id,
                 'type'  => $type
             ],[
-                'user_id' => $user_id,
                 'ready' => Playlist::PLAYLIST_STATUS_PENDING,
                 'folder' => $directory
             ]);
+
 
 
             $this->audioRepository->create([
@@ -95,11 +96,10 @@ class AudioController extends BaseDashboardController
 
         if ($audio->delete()) {
             session()->flash('success', trans('dashboard.delete-success'));
-            return response()->json(['message' => true], 200);
+            return redirect()->route('dashboard.audio.index');
         } else {
-            session()->flash('success', trans('dashboard.delete-fail'));
-
-            return response()->json(['message' => false], 200);
+            session()->flash('fail', trans('dashboard.delete-fail'));
+            return redirect()->route('dashboard.audio.index');
         }
 
     }

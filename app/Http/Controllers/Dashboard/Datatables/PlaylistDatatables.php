@@ -36,12 +36,12 @@ class PlaylistDatatables extends BaseDatatables
                 return  $value->type;
             })
             ->addColumn('status', function ($value){
-                return '<span class="btn btn-sm btn-'.($value->status == Playlist::PLAYLIST_STATUS_PENDING ? 'danger':'success').'">'.$value->status.'</span>';
+                return $value->status;
             })
             ->addColumn('action', function ($value) {
                 switch ($value->status){
                     case Playlist::PLAYLIST_STATUS_PENDING:
-                        return '<button class="btn btn-primary">Stream</button>';
+                        return '<a href="'.route('dashboard.make.playlist',['id' => $value->id]).'" class="btn btn-primary">Make</a>';
                         break;
                     case Playlist::PLAYLIST_STATUS_COMPLETED:
                         return '<button class="btn btn-primary">On Ready</button>';

@@ -18,13 +18,28 @@
     <script type="text/javascript">
         Toastify({
             text: "{{ session()->get('success') }}",
-            duration: 3000000,
+            duration: 3000,
             newWindow: true,
             close: true,
             gravity: "top", // `top` or `bottom`
             position: "center", // `left`, `center` or `right`
             stopOnFocus: true, // Prevents dismissing of toast on hover
             className: 'bg-success',
+        }).showToast();
+    </script>
+@endif
+
+@if(session()->has('fail'))
+    <script type="text/javascript">
+        Toastify({
+            text: "{{ session()->get('fail') }}",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            className: 'bg-danger',
         }).showToast();
     </script>
 @endif

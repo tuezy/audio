@@ -9,3 +9,9 @@
         <i class="ri-file-user-line"></i> <span>Playlist</span>
     </a>
 </li>
+
+<li class="nav-item">
+    <a class="nav-link menu-link" href="{{ route('dashboard.audio.index') }}">
+        <i class="ri-file-user-line"></i> <span>Audio</span>
+    </a>
+</li>

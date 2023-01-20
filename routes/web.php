@@ -41,6 +41,10 @@ Route::prefix('dashboard')->name('dashboard.')->group(function(){
     Route::get('/audio', [\App\Http\Controllers\Dashboard\AudioController::class, 'index'])->name('audio.index');
     Route::get('/audio/create', [\App\Http\Controllers\Dashboard\AudioController::class, 'create'])->name('audio.create');
     Route::post('/audio/create', [\App\Http\Controllers\Dashboard\AudioController::class, 'store'])->name('audio.store');
+    Route::get('/audio/delete/{id}', [\App\Http\Controllers\Dashboard\AudioController::class, 'delete']);
+
+
+    Route::get('/playlist/make/{id}', [\App\Http\Controllers\Dashboard\PlaylistController::class, 'make'])->name('make.playlist');
 
     Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('any');
 });

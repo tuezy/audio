@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Repository\SettingRepository;
 use App\Repository\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Yajra\DataTables\Facades\DataTables;
 
 class PlaylistController extends BaseDashboardController
@@ -27,5 +28,10 @@ class PlaylistController extends BaseDashboardController
 
     public function delete(){
         Storage::deleteDirectory();
+    }
+
+    public function make($id){
+        Artisan::call("make:playlist ".$id);
+        return redirect()->route('dashboard.playlist.index');
     }
 }
