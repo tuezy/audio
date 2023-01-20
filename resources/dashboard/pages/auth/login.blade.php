@@ -26,7 +26,7 @@
                                 <img src="{{ URL::asset('assets/dashboard/images/logo-light.png')}}" alt="" height="20">
                             </a>
                         </div>
-                        <p class="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
+                        <p class="mt-3 fs-15 fw-medium">Dashboard</p>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,6 @@
                         <div class="card-body p-4">
                             <div class="text-center mt-2">
                                 <h5 class="text-primary">Welcome Back !</h5>
-                                <p class="text-muted">Sign in to continue to Velzon.</p>
                             </div>
                             <div class="p-2 mt-4">
                                 <form action="{{ route('dashboard.login') }}" method="POST">
@@ -79,7 +78,7 @@
                                         <button class="btn btn-success w-100" type="submit">Sign In</button>
                                     </div>
 
-                                    <div class="mt-4 text-center">
+                                    <div class="mt-4 text-center d-none">
                                         <div class="signin-other-title">
                                             <h5 class="fs-13 mb-4 title">Sign In with</h5>
                                         </div>
@@ -97,7 +96,7 @@
                     </div>
                     <!-- end card -->
 
-                    <div class="mt-4 text-center">
+                    <div class="mt-4 text-center d-none">
                         <p class="mb-0">Don't have an account ? <a href="register" class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
                     </div>
 
@@ -110,17 +109,7 @@
     <!-- end auth page content -->
 
     <!-- footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-center">
-                        <p class="mb-0 text-muted">&copy; <script>document.write(new Date().getFullYear())</script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+
     <!-- end Footer -->
 </div>
 @endsection
