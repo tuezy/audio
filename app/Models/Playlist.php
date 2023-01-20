@@ -10,11 +10,17 @@ class Playlist extends Model
     use HasFactory;
 
 
-    public const Playlist_TYPE_MORNING = 'morning';
+    public const PLAYLIST_TYPE_MORNING = 'morning';
 
-    public const Playlist_TYPE_AFTERNOON = 'afternoon';
+    public const PLAYLIST_TYPE_AFTERNOON = 'afternoon';
 
-    public const Playlist_TYPE_EVENING = 'evening';
+    public const PLAYLIST_TYPE_EVENING = 'evening';
+
+    public const PLAYLIST_STATUS_PENDING = 'pending';
+
+    public const PLAYLIST_STATUS_PROCESSING = 'PROCESSING';
+
+    public const PLAYLIST_STATUS_COMPLETED = 'completed';
 
     protected $fillable = ['folder','type', 'broadcast_date','user_id'];
 

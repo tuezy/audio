@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Playlist;
 use App\Repository\PlaylistRepository;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -65,7 +66,7 @@ class MakePlaylist extends Command
             throw new ProcessFailedException($process);
         }
 
-        $playlist->ready = true;
+        $playlist->status = Playlist::PLAYLIST_STATUS_COMPLETED;
         $playlist->save();
     }
 }
